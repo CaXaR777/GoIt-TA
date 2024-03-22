@@ -2,7 +2,7 @@ import { CatalogList } from "../components/CatalogList/Cataloglist";
 
 const CatalogPage = () => {
   return (
-    <div>
+    <div className="px-16 ml-auto mr-auto w-[1440px] mt-[50px]">
       <p>Catalog</p>
       <CatalogList />
     </div>

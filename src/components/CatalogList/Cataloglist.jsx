@@ -12,14 +12,12 @@ export const CatalogList = () => {
   const catalog = useSelector(selectCatalog);
 
   return (
-    <div>
-      <ul>
+    <>
+      <ul className="flex flex-col items-center ">
         {catalog.map((item) => (
-          <li key={item._id}>
-            <CatalogItem item={item} />
-          </li>
+          <CatalogItem item={item} key={item._id} />
         ))}
       </ul>
-    </div>
+    </>
   );
 };
