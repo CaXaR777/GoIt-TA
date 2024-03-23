@@ -1,8 +1,10 @@
+import { FavoriteList } from "../components/FavoriteList/FavoriteList";
+
 const FavoritesPage = () => {
   return (
-    <>
-      <p className="text-orange-500">Favorites</p>
-    </>
+    <div className="px-16 ml-auto mr-auto w-[1440px] mt-[50px] flex">
+      <FavoriteList />
+    </div>
   );
 };
 

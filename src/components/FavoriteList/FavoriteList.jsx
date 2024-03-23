@@ -10,7 +10,7 @@ import {
 import { CatalogItem } from "../CatalogItem/CatalogItem";
 import { setCurrentPage } from "../../redux/CarCatalog/slice";
 
-export const CatalogList = () => {
+export const FavoriteList = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(setCurrentPage(1));
@@ -20,7 +20,7 @@ export const CatalogList = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
-  //  const currentItems = useSelector(selectCurrentItems);
+
   const handleLoadMore = () => {
     dispatch(setCurrentPage(currentPage + 1));
     dispatch(fetchCatalog());

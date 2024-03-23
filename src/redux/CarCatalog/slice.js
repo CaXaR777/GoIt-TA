@@ -17,6 +17,19 @@ const catalogSlice = createSlice({
     setCurrentPage: (state, action) => {
       state.currentPage = action.payload;
     },
+    addToFavorites: (state, action) => {
+      const itemToAdd = action.payload;
+
+      const existingItemIndex = state.favorites.findIndex(
+        (item) => item._id === itemToAdd._id
+      );
+
+      if (existingItemIndex !== -1) {
+        state.favorites.splice(existingItemIndex, 1);
+      } else {
+        state.favorites.push(itemToAdd);
+      }
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -27,6 +40,7 @@ const catalogSlice = createSlice({
       .addCase(fetchCatalog.fulfilled, (state, action) => {
         state.isLoading = false;
         state.catalog = action.payload;
+        // state.catalog = [...state.catalog, ...action.payload];
         state.error = null;
       })
       .addCase(fetchCatalog.rejected, (state, action) => {
@@ -36,6 +50,6 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { setCurrentPage } = catalogSlice.actions;
+export const { setCurrentPage, addToFavorites } = catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;

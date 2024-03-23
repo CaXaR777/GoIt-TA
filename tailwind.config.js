@@ -4,6 +4,18 @@ export default {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   darkMode: false,
   theme: {
+    fontFamily: { sans: ["Inter", "sans-serif"] },
+    fontSize: {
+      sm: ["14px", "20px"],
+      base: ["16px", "24px"],
+      midl: ["18px", "24px"],
+      lg: ["20px", "24px"],
+      sxl: ["24px", "30px"],
+      xl: ["24px", "32px"],
+    },
+    container: {
+      center: true,
+    },
     extend: {},
   },
   variants: {
