@@ -10,6 +10,8 @@ export const selectFavorites = (state) => state.catalog.favorites;
 
 export const selectIsLoading = (state) => state.catalog.isLoading;
 
+export const selectFilter = (state) => state.filter;
+
 export const selectCurrentItems = (state) => {
   const { currentPage, itemsPerPage, catalog } = state.catalog;
   const startIndex = (currentPage - 1) * itemsPerPage;

@@ -4,6 +4,7 @@ import { fetchCatalog } from "../../redux/CarCatalog/operations";
 import {
   selectCurrentPage,
   selectFeatures,
+  selectFilter,
   selectIsLoading,
   selectItemsPerPage,
 } from "../../redux/CarCatalog/selectors";
@@ -20,12 +21,53 @@ export const CatalogList = () => {
   const isLoading = useSelector(selectIsLoading);
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
+  const filter = useSelector(selectFilter);
   //  const currentItems = useSelector(selectCurrentItems);
+  function compareLocations(location1, location2) {
+    const words1 = new Set(
+      location1.toLowerCase().replace(/\s/g, "").split(",")
+    );
+    const words2 = new Set(
+      location2.toLowerCase().replace(/\s/g, "").split(",")
+    );
+    return (
+      [...words1].some((word) => words2.has(word)) ||
+      [...words2].some((word) => words1.has(word))
+    );
+  }
+
+  const filteredCatalog = catalog.filter((item) => {
+    if (filter.location && !compareLocations(item.location, filter.location)) {
+      return false;
+    }
+
+    if (filter.vehicleType && item.form !== filter.vehicleType) {
+      return false;
+    }
+
+    if (filter.equipment.length > 0) {
+      for (const feature of filter.equipment) {
+        if (feature === "TV") {
+          return item.details[feature] > 0;
+        } else {
+          if (item.feature[feature] === undefined) {
+            return false;
+          }
+        }
+      }
+    }
+
+    return true;
+  });
   const handleLoadMore = () => {
+    console.log(filter);
+
     dispatch(setCurrentPage(currentPage + 1));
     dispatch(fetchCatalog());
   };
-  const currentItems = catalog.slice(0, currentPage * itemsPerPage);
+  const currentItems = filteredCatalog.slice(0, currentPage * itemsPerPage);
+
+  console.log(filteredCatalog);
   return (
     <div className="flex flex-col items-center">
       <ul className="flex flex-col items-center ">

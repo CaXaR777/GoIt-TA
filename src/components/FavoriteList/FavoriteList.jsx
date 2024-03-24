@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchCatalog } from "../../redux/CarCatalog/operations";
 import {
   selectCurrentPage,
+  selectFavorites,
   selectFeatures,
   selectIsLoading,
   selectItemsPerPage,
@@ -16,10 +17,14 @@ export const FavoriteList = () => {
     dispatch(setCurrentPage(1));
     dispatch(fetchCatalog());
   }, [dispatch]);
-  const catalog = useSelector(selectFeatures);
+  const catalog = useSelector(selectFavorites);
   const isLoading = useSelector(selectIsLoading);
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
+
+  if (catalog.length === 0) {
+    return <div>No favorites yet</div>;
+  }
 
   const handleLoadMore = () => {
     dispatch(setCurrentPage(currentPage + 1));
@@ -27,7 +32,7 @@ export const FavoriteList = () => {
   };
   const currentItems = catalog.slice(0, currentPage * itemsPerPage);
   return (
-    <div className="flex flex-col items-center">
+    <div className="flex flex-col items-center ">
       <ul className="flex flex-col items-center ">
         {currentItems.map((item) => (
           <CatalogItem item={item} key={item._id} />

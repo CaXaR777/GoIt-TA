@@ -1,36 +1,54 @@
+import clsx from "clsx";
 import { NavLink } from "react-router-dom";
-import icons from "../../assets/icons.svg";
 
 export const Header = () => {
   return (
-    <div className="bg-blue-600 text-amber-300">
-      <NavLink
-        exact="true"
-        to="/"
-        activeclassname="bg-red-600"
-        className="text-white px-3 py-2 inline-block "
-      >
-        <svg className="w-[25px] h-[25px]  fill-black ">
-          <use href={`${icons}#icon-petrol`} />
-        </svg>
-        Home
-      </NavLink>
-      <NavLink
-        exact="true"
-        to="/catalog"
-        activeclassname="bg-red-600"
-        className="text-white px-3 py-2 inline-block "
-      >
-        Catalog
-      </NavLink>
-      <NavLink
-        exact="true"
-        to="/favorites"
-        activeclassname="bg-red-600"
-        className="text-white px-3 py-2 inline-block  "
-      >
-        Favorites
-      </NavLink>
-    </div>
+    <>
+      <header className="bg-[#475467]">
+        <div className="h-[72px] flex justify-center  items-center container">
+          <nav className="flex gap-[50px]">
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                clsx(
+                  "text-xl text-white font-light py-[4px] px-[20px] rounded-[10px]  border-[2px]",
+                  isActive
+                    ? " rounded-[200px]  border-[2px]  border-[#E44848]"
+                    : "border-transparent"
+                )
+              }
+            >
+              Home
+            </NavLink>
+            <NavLink
+              to={"/catalog"}
+              className={({ isActive }) =>
+                clsx(
+                  "text-xl text-white font-light py-[4px] px-[20px] rounded-[10px]  border-[2px]",
+                  isActive
+                    ? " rounded-[200px]  border-[2px]  border-[#E44848]"
+                    : "border-transparent"
+                )
+              }
+            >
+              Catalog
+            </NavLink>
+            <NavLink
+              to={"/favorites"}
+              className={({ isActive }) =>
+                clsx(
+                  "text-xl text-white font-light py-[4px] px-[20px] rounded-[10px]  border-[2px]",
+                  isActive
+                    ? " rounded-[200px]  border-[2px]  border-[#E44848]"
+                    : "border-transparent"
+                )
+              }
+            >
+              Favorites
+            </NavLink>
+          </nav>
+        </div>
+      </header>
+    </>
   );
 };

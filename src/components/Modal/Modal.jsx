@@ -50,16 +50,19 @@ export const Modal = ({ isVisible, onClose, item }) => {
             <use href={`${icons}#icon-close`} />
           </svg>
         </button>
-        <h3 className="font-semibold truncate w-[350px] text-2xl text-[#101828] inline-block">
-          {item.name}
-        </h3>
-        <div className="flex items-center mb-6">
-          <ItemRating rating={item.rating} reviews={item.reviews} />
-          <ItemLocation location={item.location} />
+
+        <div className="mb-[24px]">
+          <h3 className="font-semibold text-sxl truncate w-[350px] text-2xl text-[#101828] inline-block">
+            {item.name}
+          </h3>
+          <div className="flex items-center mb-6">
+            <ItemRating rating={item.rating} reviews={item.reviews} />
+            <ItemLocation location={item.location} />
+          </div>
+          <p className="font-normal text-xl text-[#101828] inline-block pr-3">
+            €{item.price}.00
+          </p>
         </div>
-        <p className="font-normal text-xl text-[#101828] inline-block pr-3">
-          €{item.price}.00
-        </p>
 
         <div className="flex gap-4 mb-[24px]">
           <ItemImg img={item?.gallery[0]} name={item.name} />
@@ -97,7 +100,7 @@ export const Modal = ({ isVisible, onClose, item }) => {
               // Отображаем контент для вкладки "Reviews"
               <ModalReviews item={item} />
             )}
-            <BookForm />
+            <BookForm item={item} />
           </div>
         </div>
       </div>

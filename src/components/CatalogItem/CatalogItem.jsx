@@ -52,7 +52,7 @@ export const CatalogItem = ({ item }) => {
         </p>
         <Features feature={item.feature} maxFeature={6} />
         <button
-          className="w-[156px] h-[56px] rounded-[200px] bg-[#e44848] text-white font-medium text-base tracking-[-0.01em]"
+          className="w-[156px] h-[56px] rounded-[200px] bg-[#D84343] hover:bg-[#E44848] focus:bg-[#E44848] text-white font-medium text-base tracking-[-0.01em]"
           onClick={() => setShowmodal(true)}
         >
           Show more

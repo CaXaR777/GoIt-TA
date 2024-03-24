@@ -12,6 +12,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import { catalogReducer } from "./CarCatalog/slice";
+import { filterReducer } from "./CarCatalog/filterSlice";
 
 // Импортируйте ваши редукторы (reducers) здесь
 // import userReducer from "./reducers/userReducer";
@@ -21,11 +22,12 @@ import { catalogReducer } from "./CarCatalog/slice";
 const persistConfig = {
   key: "favorite",
   storage,
-  whitelist: ["favorites"],
+  whitelist: ["favorites", "bookings"],
 };
 // Объедините ваши редукторы в корневой редуктор
 const rootReducer = combineReducers({
   catalog: persistReducer(persistConfig, catalogReducer),
+  filter: filterReducer,
 });
 
 // Создайте и экспортируйте хранилище Redux
