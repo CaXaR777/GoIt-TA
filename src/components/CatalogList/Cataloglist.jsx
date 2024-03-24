@@ -75,7 +75,7 @@ export const CatalogList = () => {
           <CatalogItem item={item} key={item._id} />
         ))}
       </ul>
-      {currentItems.length < catalog.length && !isLoading && (
+      {currentItems.length < filteredCatalog.length && !isLoading && (
         <button
           className="w-[146px] h-[56px] mt-[18px] mb-6 py-[16px] px-[32px] border border-[rgba(71, 84, 103, 0.2)] rounded-[200px] font-medium text-sm tracking-[-0.01em] text-[#101828]"
           onClick={handleLoadMore}

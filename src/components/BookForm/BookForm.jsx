@@ -1,12 +1,13 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
-import "react-datepicker/dist/react-datepicker.css";
+
 import icons from "../../assets/icons.svg";
 import { useDispatch } from "react-redux";
 import { addBooking } from "../../redux/CarCatalog/slice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { CalendarGlobalStyles } from "./DataPicker.styled";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -35,7 +36,7 @@ export const BookForm = ({ item }) => {
     setSubmitting(false);
     // window.location.reload();
   };
-
+  const currentDate = new Date().toISOString().split("T")[0];
   return (
     <div className="w-[448px] p-[24px] mt-[44px] ml-[24px] border border-gray-300 rounded-[10px]">
       <h4 className="text-lg font-semibold mb-[8px]">
@@ -48,7 +49,7 @@ export const BookForm = ({ item }) => {
         initialValues={{
           name: "",
           email: "",
-          bookingDate: null,
+          bookingDate: currentDate,
           comment: "",
         }}
         validationSchema={validationSchema}
@@ -66,7 +67,7 @@ export const BookForm = ({ item }) => {
               <ErrorMessage
                 name="name"
                 component="div"
-                className="absolute z-10 text-red-500 text-xsm top-[53px] left-0"
+                className="absolute  text-red-500 text-xsm top-[53px] left-0"
               />
             </div>
 
@@ -80,20 +81,25 @@ export const BookForm = ({ item }) => {
               <ErrorMessage
                 name="email"
                 component="div"
-                className="absolute z-10 text-red-500 text-xsm top-[53px] left-0"
+                className="absolute  text-red-500 text-xsm top-[53px] left-0"
               />
             </div>
 
             <div className="mb-[14px] relative flex items-center">
-              <DatePicker
-                name="bookingDate"
-                selected={values.bookingDate}
-                onChange={(date) => setFieldValue("bookingDate", date)}
-                dateFormat="dd/MM/yyyy"
-                placeholderText="Booking Date"
-                minDate={new Date()}
-                className="w-[400px] flex-1 h-[56px] pl-[18px] border bg-[#F7F7F7] rounded focus:outline-none focus:bg-white my-custom-datepicker"
-              />
+              <>
+                <DatePicker
+                  name="bookingDate"
+                  selected={values.bookingDate}
+                  onChange={(date) => setFieldValue("bookingDate", date)}
+                  dateFormat="dd/MM/yyyy"
+                  placeholderText="Booking Date"
+                  minDate={new Date()}
+                  calendarStartDay={1}
+                  className="w-[400px] flex-1 h-[56px] pl-[18px] border bg-[#F7F7F7] rounded focus:outline-none focus:bg-white my-custom-datepicker"
+                />
+                <CalendarGlobalStyles />
+              </>
+
               <ErrorMessage
                 name="bookingDate"
                 component="div"

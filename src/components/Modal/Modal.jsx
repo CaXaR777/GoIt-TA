@@ -91,15 +91,8 @@ export const Modal = ({ isVisible, onClose, item }) => {
             </button>
           </div>
           <div className="flex">
-            {activeTab === "features" && (
-              // Отображаем контент для вкладки "Features"
-
-              <ModalFeatures item={item} />
-            )}
-            {activeTab === "reviews" && (
-              // Отображаем контент для вкладки "Reviews"
-              <ModalReviews item={item} />
-            )}
+            {activeTab === "features" && <ModalFeatures item={item} />}
+            {activeTab === "reviews" && <ModalReviews item={item} />}
             <BookForm item={item} />
           </div>
         </div>

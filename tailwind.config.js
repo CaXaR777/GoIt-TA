@@ -2,12 +2,13 @@
 export default {
   mode: "jit",
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
-  darkMode: false,
+
   theme: {
     fontFamily: { sans: ["Inter", "sans-serif"] },
     fontSize: {
       xsm: ["12px", "20px"],
       sm: ["14px", "20px"],
+      msm: ["16px", "20px"],
       base: ["16px", "24px"],
       midl: ["18px", "24px"],
       lg: ["20px", "24px"],
