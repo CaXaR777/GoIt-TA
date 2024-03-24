@@ -41,7 +41,7 @@ export const Modal = ({ isVisible, onClose, item }) => {
         className="absolute inset-0 bg-gray-500 opacity-40 "
         onClick={() => onClose()}
       />
-      <div className="relative bg-white p-8 rounded-[20px] w-[972px] h-[720px]  ">
+      <div className="relative bg-white p-[40px] rounded-[20px] w-[972px] h-[720px]  ">
         <button
           className="absolute top-4 right-4 w-8 h-8"
           onClick={() => onClose()}
@@ -63,8 +63,8 @@ export const Modal = ({ isVisible, onClose, item }) => {
             €{item.price}.00
           </p>
         </div>
-        <div className="h-[526px]  overflow-y-auto pr-4 overflow-x-hidden">
-          <div className="flex gap-4 mb-[24px]">
+        <div className="h-[526px] w-[918px]  overflow-y-auto  overflow-x-hidden">
+          <div className="flex gap-4 mb-[24px] ">
             <ItemImg img={item?.gallery[0]} name={item.name} />
             <ItemImg img={item?.gallery[1]} name={item.name} />
             <ItemImg img={item?.gallery[2]} name={item.name} />
