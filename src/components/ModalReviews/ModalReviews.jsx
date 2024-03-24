@@ -1,4 +1,5 @@
 import icons from "../../assets/icons.svg";
+import PropTypes from "prop-types";
 
 export const ModalReviews = ({ item }) => {
   return (
@@ -30,4 +31,9 @@ export const ModalReviews = ({ item }) => {
       </ul>
     </div>
   );
+};
+ModalReviews.propTypes = {
+  item: PropTypes.shape({
+    reviews: PropTypes.array.isRequired,
+  }).isRequired,
 };

@@ -21,6 +21,12 @@ const catalogSlice = createSlice({
     addBooking: (state, action) => {
       state.bookings.push(action.payload);
     },
+    deleteBooking: (state, action) => {
+      const bookingIdToDelete = action.payload;
+      state.bookings = state.bookings.filter(
+        (booking) => booking._id !== bookingIdToDelete
+      );
+    },
     addToFavorites: (state, action) => {
       const itemToAdd = action.payload;
 
@@ -54,7 +60,7 @@ const catalogSlice = createSlice({
   },
 });
 
-export const { setCurrentPage, addToFavorites, addBooking } =
+export const { setCurrentPage, addToFavorites, addBooking, deleteBooking } =
   catalogSlice.actions;
 
 export const catalogReducer = catalogSlice.reducer;

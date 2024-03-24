@@ -4,7 +4,6 @@ import { fetchCatalog } from "../../redux/CarCatalog/operations";
 import {
   selectCurrentPage,
   selectFavorites,
-  selectFeatures,
   selectIsLoading,
   selectItemsPerPage,
 } from "../../redux/CarCatalog/selectors";
@@ -23,7 +22,11 @@ export const FavoriteList = () => {
   const itemsPerPage = useSelector(selectItemsPerPage);
 
   if (catalog.length === 0) {
-    return <div>No favorites yet</div>;
+    return (
+      <p className="text-center text-lg text-gray-600 mt-4">
+        No favorites yet. Explore our collection to find your favorites!
+      </p>
+    );
   }
 
   const handleLoadMore = () => {

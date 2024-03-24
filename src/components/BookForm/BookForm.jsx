@@ -1,13 +1,14 @@
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
 import * as Yup from "yup";
-
+import { nanoid } from "nanoid";
 import icons from "../../assets/icons.svg";
 import { useDispatch } from "react-redux";
 import { addBooking } from "../../redux/CarCatalog/slice";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { CalendarGlobalStyles } from "./DataPicker.styled";
+import PropTypes from "prop-types";
 
 const validationSchema = Yup.object().shape({
   name: Yup.string().required("Name is required"),
@@ -20,23 +21,26 @@ export const BookForm = ({ item }) => {
   const dispatch = useDispatch();
   const handleSubmit = (values, { setSubmitting }) => {
     const { bookingDate } = values;
+    const id = nanoid();
     const dateString = `${bookingDate.getDate()}/${
       bookingDate.getMonth() + 1
     }/${bookingDate.getFullYear()}`;
     dispatch(
       addBooking({
         ...values,
+        _id: id,
         bookingDate: dateString,
         itemName: item.name,
         itemLocation: item.location,
       })
     );
+
     toast.success("Booking added");
 
     setSubmitting(false);
     // window.location.reload();
   };
-  const currentDate = new Date().toISOString().split("T")[0];
+
   return (
     <div className="w-[448px] p-[24px] mt-[44px] ml-[24px] border border-gray-300 rounded-[10px]">
       <h4 className="text-lg font-semibold mb-[8px]">
@@ -49,7 +53,7 @@ export const BookForm = ({ item }) => {
         initialValues={{
           name: "",
           email: "",
-          bookingDate: currentDate,
+          bookingDate: "",
           comment: "",
         }}
         validationSchema={validationSchema}
@@ -136,4 +140,11 @@ export const BookForm = ({ item }) => {
       </Formik>
     </div>
   );
+};
+
+BookForm.propTypes = {
+  item: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    location: PropTypes.string.isRequired,
+  }).isRequired,
 };

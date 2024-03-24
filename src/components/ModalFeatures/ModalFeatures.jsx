@@ -1,4 +1,5 @@
 import { Features } from "../Features/Features";
+import PropTypes from "prop-types";
 
 export const ModalFeatures = ({ item }) => {
   const addSpaces = (str) => {
@@ -38,4 +39,15 @@ export const ModalFeatures = ({ item }) => {
       </ul>
     </div>
   );
+};
+ModalFeatures.propTypes = {
+  item: PropTypes.shape({
+    form: PropTypes.string.isRequired,
+    length: PropTypes.string.isRequired,
+    width: PropTypes.string.isRequired,
+    height: PropTypes.string.isRequired,
+    tank: PropTypes.string.isRequired,
+    consumption: PropTypes.string.isRequired,
+    feature: PropTypes.object.isRequired,
+  }).isRequired,
 };

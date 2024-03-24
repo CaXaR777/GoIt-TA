@@ -15,7 +15,6 @@ export const Filter = () => {
 
   const handleSubmit = (values) => {
     dispatch(changeFilter(values));
-    console.log(values);
   };
 
   return (

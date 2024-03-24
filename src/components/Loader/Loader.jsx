@@ -1,27 +1,18 @@
-import { InfinitySpin } from "react-loader-spinner";
-
-// const FullScreenLoader = styled.div`
-//   position: fixed;
-//   top: 0;
-//   left: 0;
-//   width: 100%;
-//   height: 100%;
-//   background-color: black;
-
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// `;
+import { MagnifyingGlass } from "react-loader-spinner";
 
 export const Loader = () => {
   return (
-    <InfinitySpin
-      color="#ef8964"
-      // {(p) => p.theme.colors.orangeColor}
-      visible={true}
-      height={200}
-      width={200}
-      ariaLabel="infinity-spin-loading"
-    />
+    <div className="fixed top-0 left-0 w-full h-full bg-black bg-opacity-20 flex justify-center items-center z-50">
+      <MagnifyingGlass
+        visible={true}
+        height={80}
+        width={80}
+        ariaLabel="magnifying-glass-loading"
+        wrapperStyle={{}}
+        wrapperClass="magnifying-glass-wrapper"
+        glassColor="#c0efff"
+        color="#e15b64"
+      />
+    </div>
   );
 };

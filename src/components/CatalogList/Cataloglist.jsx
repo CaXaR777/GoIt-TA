@@ -22,7 +22,7 @@ export const CatalogList = () => {
   const currentPage = useSelector(selectCurrentPage);
   const itemsPerPage = useSelector(selectItemsPerPage);
   const filter = useSelector(selectFilter);
-  //  const currentItems = useSelector(selectCurrentItems);
+
   function compareLocations(location1, location2) {
     const words1 = new Set(
       location1.toLowerCase().replace(/\s/g, "").split(",")
@@ -60,14 +60,14 @@ export const CatalogList = () => {
     return true;
   });
   const handleLoadMore = () => {
-    console.log(filter);
+    // console.log(filter);
 
     dispatch(setCurrentPage(currentPage + 1));
     dispatch(fetchCatalog());
   };
   const currentItems = filteredCatalog.slice(0, currentPage * itemsPerPage);
 
-  console.log(filteredCatalog);
+  //   console.log(filteredCatalog);
   return (
     <div className="flex flex-col items-center">
       <ul className="flex flex-col items-center ">

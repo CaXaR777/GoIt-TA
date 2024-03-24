@@ -101,6 +101,9 @@ export const Modal = ({ isVisible, onClose, item }) => {
   );
 };
 Modal.propTypes = {
+  isVisible: PropTypes.bool.isRequired,
+
+  onClose: PropTypes.func.isRequired,
   item: PropTypes.shape({
     _id: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
@@ -113,4 +116,8 @@ Modal.propTypes = {
     gallery: PropTypes.array.isRequired,
     feature: PropTypes.object.isRequired,
   }).isRequired,
+};
+
+TabIndicator.propTypes = {
+  activeTab: PropTypes.bool.isRequired,
 };
