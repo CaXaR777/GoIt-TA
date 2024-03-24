@@ -35,10 +35,10 @@ export const BookForm = ({ item }) => {
       })
     );
 
-    toast.success("Booking added");
+    // toast.success("Booking added");
 
     setSubmitting(false);
-    // window.location.reload();
+    window.location.reload();
   };
 
   return (
